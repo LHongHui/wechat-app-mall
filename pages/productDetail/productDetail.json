@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品详情",
+  "usingComponents": {
+    "nav-bar": "../../components/navbar/navbar",
+    "music":"../../components/music/music"
+  }
+}

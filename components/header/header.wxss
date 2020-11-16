@@ -1,0 +1,26 @@
+/* components/header/header.wxss */
+.header{
+  width: 100%;
+  position: fixed;
+  top: 200rpx;
+  z-index: 999;
+}
+ .search{
+  height:65rpx;
+  margin:0 45rpx 20rpx 45rpx ;
+  text-align: center;
+  background-color:rgb(232, 232, 232);
+  border-radius: 40rpx;
+  opacity: 0.5;
+} 
+.search input{
+  margin: 10rpx auto;
+  padding-left: 80rpx;
+}
+.search image{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 100rpx;
+  margin: 8rpx auto;
+}

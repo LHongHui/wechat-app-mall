@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/post/post",
+    "pages/upload/upload",
+    "pages/music/music",
+
+    "pages/index/index",
+    "pages/product/product",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/my/my",
+    "pages/productDetail/productDetail",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#f60",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我买网电商",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "navigationStyle":"custom"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#1E90FF",
+    "backgroundColor": "#eee",
+    "borderStyle": "white",
+    "position": "bottom",
+    "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "商城",
+          "iconPath": "assets/image/shouye.png",
+          "selectedIconPath": "assets/image/shouye-2.png"
+        },
+        {
+          "pagePath": "pages/category/category",
+          "text": "分类",
+          "iconPath": "assets/image/fenlei.png",
+          "selectedIconPath": "assets/image/fenlei-2.png"
+        },
+        {
+          "pagePath": "pages/cart/cart",
+          "text": "购物车",
+          "iconPath": "assets/image/gouwuche.png",
+          "selectedIconPath": "assets/image/gouwuche-2.png"
+        },
+        {
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "assets/image/wode.png",
+          "selectedIconPath": "assets/image/wode-2.png"
+        }
+      ]
+    },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "nav-bar": "/components/navbar/navbar"
+  }
+}

@@ -1,0 +1,7 @@
+<!--components/header/header.wxml-->
+<view class="header">
+  <view class="search">
+    <image src="/assets/icon/sousuo.png"/>
+    <input type="text" placeholder="tuc680"></input>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<!--pages/post/post.wxml-->
+<view class="post">
+  <view class="animate"> 
+    <image src="../../assets/image/animate.jpg" animation="{{animationData}}" id="rotate" ></image>
+  </view>
+  <view class="content">
+    <text class="title">佳音乐器</text>
+    <view class="click">
+        <view class="btn" bindtap="goIndex" data-id="{{item._id}}">探索尤克里里</view>
+    </view>
+  </view>
+</view>

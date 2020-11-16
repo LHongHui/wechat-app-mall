@@ -1,0 +1,8 @@
+<movable-area>
+<!-- bindchange="changePosition" -->
+	<movable-view direction="all" inertia="{{true}}" x="{{x}}" y="{{y}}" damping="50"  class="musicWrap">
+		<view>
+			<image class="img" animation="{{animationData}}" bindtap="fun" src="/assets/image/Joy9.jpg"></image>
+		</view>
+	</movable-view>
+</movable-area>

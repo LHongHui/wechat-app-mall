@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "分类页",
+  "usingComponents": {
+    "header":"../../components/header/header"
+  }
+}

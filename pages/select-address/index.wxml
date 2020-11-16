@@ -1,0 +1,42 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="container">
+  <view class="address-list">
+    <view wx:for="{{addressList}}" wx:key="index">
+      <view class="a-address" wx:if="{{item.default_address == 1}}">
+        <view class="left-text" bindtap="selectTap" data-id="{{item._id}}">
+          <view class="name-tel">
+            {{item.name}} {{item.phone}}
+          </view>
+          <view class="address-box">
+            {{provinces[item.province].name}} {{cities[cIndex].name}} {{areas[aIndex].name}} {{item.addressInfo}}
+          </view>
+        </view>
+        <view class="default">默认</view>
+        <view class="right-edit" bindtap="editAddess" data-id="{{item._id}}">
+          <image src="/assets/icon/edit.png"></image>
+        </view>
+      </view>
+
+      <view class="a-address" wx:else>
+        <view class="left-text" bindtap="selectTap" data-id="{{item._id}}">
+          <view class="name-tel">
+            {{item.name}} {{item.phone}}
+          </view>
+          <view class="address-box">
+            {{provinces[pIndex].name}} {{cities[cIndex].name}} {{areas[aIndex].name}} {{item.addressInfo}}
+          </view>
+        </view>
+        <view class="right-edit" bindtap="editAddess" data-id="{{item._id}}">
+          <image src="/assets/icon/edit.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-box" bindtap="addAddess">
+    <view class="add-btn">
+      <image src="/assets/icon/xinzeng.png"></image>
+      <view>新增收货地址</view>
+    </view>
+    <!-- <image class="next" src="/assets/icon/next.png"></image> -->
+  </view>
+</view>

@@ -1,0 +1,82 @@
+<view class="header">
+  <view class="search">
+    <!-- bindconfirm 手机的确认按钮触发的事件 -->
+    <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="/assets/icon/search.svg"></image>
+  </view>
+  <image class="show-type" src="/assets/icon/list{{listType}}.svg" bindtap="changeShowType"></image>
+</view>
+
+<view class="history" wx:if="{{historys.length}}">
+    <view class="line"></view>
+    <view class="history-title">历史搜索</view>
+    <view class="g-list">
+      <view class="g-list-item" wx:for="{{historys}}" wx:key="index">
+     
+        <text class="g-list-text" data-name="{{item}}" bindtap="tolinkName">{{item}}</text>
+    
+        <image class="g-list-img" src="/assets/icon/cuowu.png" bindtap="removeItem" data-item="{{item}}"></image>
+        
+      </view>
+    </view>
+    <button  bindtap="clear">
+      清空历史搜索
+    </button>
+  </view>
+<view class="line"></view>
+<view class="filters">
+  <!-- // orderBy: is_new 最新商品,click_count, shop_price   -->
+  <view class="item {{orderBy==''?'active':''}}" data-val="" bindtap="filter">综合</view>
+  <view class="item {{orderBy=='is_new'?'active':''}}" data-val="is_new" bindtap="filter">新品</view>
+  <view class="item {{orderBy=='click_count'?'active':''}}" data-val="click_count" bindtap="filter">销量</view>
+  <view class="item {{orderBy=='shop_price'?'active':''}}" data-val="shop_price" bindtap="filter">价格</view>
+</view>
+<block wx:if="{{listType == 1}}">
+  <view class="list1" wx:for="{{goods}}" wx:key="id">
+    <navigator url="/pages/productDetail/productDetail?id={{item._id}}"><image class="img" mode="aspectFill" src="{{url}}{{item.goods_cover}}"></image></navigator>
+    <view class="goods-info">
+      <view class="title ellipsis"><navigator url="/pages/productDetail/productDetail?id={{item._id}}">{{item.title}}</navigator></view>
+      <view class="price">¥ {{item.shop_price}}</view>
+      <view class="buy-info">
+        <view class="num">已售出{{item.click_count}}件</view>
+        <image class="car" src="/assets/icon/car.svg" data-id="{{item._id}}" bindtap="addShopCar"></image>
+      </view>
+    </view>
+  </view>
+</block>
+<view wx:if="{{listType == 2}}" class="list2-box">
+  <view class="list2" wx:for="{{goods}}" wx:key="id">
+    <navigator url="/pages/productDetail/productDetail?id={{item._id}}"><image class="img" mode="aspectFill" src="{{url}}{{item.goods_cover}}"></image></navigator>
+    <view class="goods-info">
+      <view class="title"><navigator url="/pages/productDetail/productDetail?id={{item._id}}">{{item.title}}</navigator></view>
+      <view class="price">¥ {{item.shop_price}}</view>
+      <view class="buy-info">
+        <view class="num">已购{{item.click_count}}件</view>
+        <image class="car" src="/assets/icon/car.svg" data-id="{{item._id}}" bindtap="addShopCar"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<block wx:if="{{skuCurGoods}}">
+  <view class="sku-mask"></view>
+  <view class="sku-container">
+    <image class="close" src="/images/icon/close.svg" bindtap="closeSku"></image>
+    <view class="sku" wx:for="{{skuCurGoods.properties}}" wx:key="id">
+      <view class="t">{{item.name}}</view>
+      <view class="items">
+        <text class="{{small.active? 'active' : ''}}" wx:for="{{item.childsCurGoods}}" wx:for-item="small" wx:key="id" data-pid="{{small.propertyId}}" data-id="{{small.id}}" bindtap="skuSelect">{{small.name}}</text>
+      </view>
+    </view>
+    <view class="num">
+      <view class="t">购买数量</view>
+      <view class="num-box">
+        <text class="a" bindtap="storesJian">-</text>
+        <text class="b">{{skuCurGoods.basicInfo.storesBuy}}</text>
+        <text class="a" bindtap="storesJia">+</text>
+      </view>
+    </view>
+  </view>
+  <view class="sku-btn" bindtap="addCarSku">加入购物车</view>
+</block>

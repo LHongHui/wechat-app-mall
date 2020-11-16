@@ -1,0 +1,257 @@
+<!--index.wxml-->
+<view class="page"> 
+    <image src="../../assets/image/nav2.jpg" mode="widthFix" class="navimg" ></image>
+        <!-- <view wx:for="{{products}}" wx:key="index" bindtap="goProductDetail" data-id="{{item._id}}"> -->
+        <image src="../../assets/image/Logo.jpg" class="logo" ></image>
+    <!-- </view> -->
+    <text class="jiayin">佳音乐器</text>
+    <text class="guanzhu">2.3万人关注</text>
+    
+    <view class="sousuo" bindtap="goSearch">搜索</view> 
+    <image src="../../assets/image/sousuo.png " id="searchpng"></image>
+    <view class="tab">
+        <view class="nav">
+            <view class="{{index==active?'tab cur':'tab'}} title"wx:key="index" wx:for="{{tab}}" data-index="{{index}}"  bindtap="getChange">{{item}}</view>
+        </view>
+        <!-- tab下的内容 -->
+        <view class="cons">
+         <!-- 首页Tab -->
+            <view class="{{0==active?'desc cur':'desc'}}">
+    <scroll-view scroll-y style="height:{{windowHeight}}px;" bindscrolltolower="loadMore"
+                    refresher-enabled="{{true}}"
+                    refresher-triggered="{{triggered}}"
+                    bindrefresherrefresh="onRefresh"
+                    bindrefresherpulling="onPulling"
+                > 
+  <!-- 轮播图 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="banner" circular="true" style="height:{{height}}px">
+   <!-- block 区块但不会解析为任何标记   view 解析 div -->
+		<block wx:for="{{swipers}}" wx:key="index">
+			<swiper-item>
+                <!--  图像组件  image -->
+				<image src="{{url}}{{item.focus_img}}" width="100%" mode="widthFix"/>
+			</swiper-item>
+		</block>
+	</swiper>
+<!-- 轮播图end -->
+<!-- 横向滚动 -->
+    <view class="bao">——精品推荐——</view>
+	 <view class="page-section-spacing">
+        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+            <view id="demo1" class="scroll-view-item_H demo-text-1"  >
+                <image src="../../assets/image/goods17.jpg" bindtap="tabClick"></image>
+                <text class="title">TOM卡林巴拇指琴</text>
+            </view>
+            <view id="demo2"  class="scroll-view-item_H demo-text-2">
+                <image src="../../assets/image/Joy1.jpg"></image>
+                 <text class="title">TOM京东JOY定制款</text>
+            </view>
+            <view id="demo3" class="scroll-view-item_H demo-text-3">
+                <image src="../../assets/image/jiang1.jpg"></image>
+                <text class="title">江一燕设计款系列</text>
+            </view>
+                
+            <view id="demo4" class="scroll-view-item_H demo-text-4">
+                <image src="../../assets/image/o2.jpg"  bindtap="goProductDetail"></image>
+                <text class="title">TOM欧阳娜娜系列</text>
+            </view>
+             <view id="demo5" class="scroll-view-item_H demo-text-5">
+                <image src="../../assets/image/jingdian1.jpg"></image>
+                <text class="title">TOM经典型号系列</text>
+            </view>
+             <view id="demo6" class="scroll-view-item_H demo-text-6">
+                <image src="../../assets/image/zengcang1.jpg"></image>
+                <text class="title">TOM珍藏版系列</text>
+            </view>
+        </scroll-view>
+        <!-- 横向滚动结束 -->
+	</view>
+        <view class="fenlei">
+            <image src="../../assets/image/fenlei1.jpg" mode="widthFix"></image>
+        <view>
+            <view class="recommend">
+                <block wx:for="{{goodslist0}}"  wx:key="index">
+                    <view class="item-outter box box1" bindtap="goProductDetail" data-id="{{item._id}}">
+                        <view class="imgs">
+                            <image src="{{url}}{{item.goods_cover}}" />
+                        </view>
+                        <view class="title">{{item.title}}</view>
+                        <view class="info">
+                            <text class="price">¥{{item.market_price}}</text>
+                            <text class="count">点击量{{item.click_count}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+         <view  class="fenlei">
+            <image src="../../assets/image/fenlei2.jpg" mode="widthFix"></image>
+                <view class="recommend">
+                    <block wx:for="{{goodslist1}}"  wx:key="index">
+                        <view class="item-outter" bindtap="goProductDetail" data-id="{{item._id}}">
+                        <view class="imgs">
+                            <image src="{{url}}{{item.goods_cover}}" />
+                        </view>
+                        <view class="title">{{item.title}}</view>
+                        <view class="info">
+                            <text class="price">¥{{item.market_price}}</text>
+                            <text class="count">点击量{{item.click_count}}</text>
+                        </view>
+                        </view>
+                    </block>
+                </view>
+        </view>
+        <view  class="fenlei">
+            <image src="../../assets/image/fenlei3.jpg" mode="widthFix"></image>
+            <view>
+            <view class="recommend">
+                <block wx:for="{{goodslist2}}"  wx:key="index">
+                    <view class="item-outter" bindtap="goProductDetail" data-id="{{item._id}}">
+                    <view class="imgs">
+                        <image src="{{url}}{{item.goods_cover}}" />
+                    </view>
+                    <view class="title">{{item.title}}</view>
+                    <view class="info">
+                        <text class="price">¥{{item.market_price}}</text>
+                        <text class="count">点击量{{item.click_count}}</text>
+                    </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        </view>
+        <view  class="fenlei">
+            <image src="../../assets/image/fenlei4.jpg" mode="widthFix"></image>
+             <view>
+            <view class="recommend">
+                <block wx:for="{{goodslist3}}"  wx:key="index">
+                    <view class="item-outter" bindtap="goProductDetail" data-id="{{item._id}}">
+                    <view class="imgs">
+                        <image src="{{url}}{{item.goods_cover}}" />
+                    </view>
+                    <view class="title">{{item.title}}</view>
+                    <view class="info">
+                        <text class="price">¥{{item.market_price}}</text>
+                        <text class="count">点击量{{item.click_count}}</text>
+                    </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        </view>
+        <view  class="fenlei">
+            <image src="../../assets/image/fenlei5.jpg" mode="widthFix"></image>
+            <view>
+               <view class="recommend">
+                <block wx:for="{{goodslist4}}"  wx:key="index">
+                    <view class="item-outter" bindtap="goProductDetail" data-id="{{item._id}}">
+                    <view class="imgs">
+                        <image src="{{url}}{{item.goods_cover}}" />
+                    </view>
+                    <view class="title">{{item.title}}</view>
+                    <view class="info">
+                        <text class="price">¥{{item.market_price}}</text>
+                        <text class="count">点击量{{item.click_count}}</text>
+                    </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view  class="fenlei">
+            <image src="../../assets/image/fenlei6.jpg" mode="widthFix"></image>
+            <view>
+            <view class="recommend">
+                <block wx:for="{{goodslist5}}"  wx:key="index">
+                    <view class="item-outter" bindtap="goProductDetail" data-id="{{item._id}}">
+                    <view class="imgs">
+                        <image src="{{url}}{{item.goods_cover}}" />
+                    </view>
+                    <view class="title">{{item.title}}</view>
+                    <view class="info">
+                        <text class="price">¥{{item.market_price}}</text>
+                        <text class="count">点击量{{item.click_count}}</text>
+                    </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class='goTop' hidden='{{!floorstatus}}' bindtap="goTop">回到顶部</view>
+        </view>
+        </scroll-view>
+            </view>
+            <!-- 商品tab -->
+            <view class="{{1==active?'desc cur':'desc'}}">
+                <scroll-view scroll-y style="height:{{windowHeight}}px;" bindscrolltolower="loadMore"
+                    refresher-enabled="{{true}}"
+                    refresher-triggered="{{triggered}}"
+                    bindrefresherrefresh="onRefresh"
+                    bindrefresherpulling="onPulling"
+                >
+                <!-- <view class="filters"> -->
+                    <!-- // orderBy: is_new 最新商品,click_count, shop_price   -->
+                    <!-- <view class="item {{orderBy==''?'active':''}}" data-val="" bindtap="filter">综合</view>
+                    <view class="item {{orderBy=='is_new'?'active':''}}" data-val="is_new" bindtap="filter">新品</view>
+                    <view class="item {{orderBy=='click_count'?'active':''}}" data-val="click_count" bindtap="filter">销量</view>
+                    <view class="item {{orderBy=='shop_price'?'active':''}}" data-val="shop_price" bindtap="filter">价格</view> -->
+                <!-- </view> -->
+                <view>                     
+                    <!-- 商品数据-->
+                    <view class="recommend">
+                        <view wx:for="{{products}}" wx:key="index" class="item" bindtap="goProductDetail" data-id="{{item._id}}">
+                            <view class="imgs">
+                                <image src="{{url}}{{item.goods_cover}}"></image>
+                            </view>
+                            <view class="title">{{item.title}}</view>
+                                <view class="price">
+                                    <text class="price1">¥{{item.shop_price}}</text>
+                                    <text class="count">销量:{{item.click_count}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class='goTop' hidden='{{!floorstatus}}' bindtap="goTop">回到顶部</view>
+            </view>
+            <!-- 活动tab -->
+            <view class="{{2==active?'desc cur':'desc'}}">
+                <!--pages/huodong/huodong.wxml-->
+                <scroll-view scroll-y style="height:{{windowHeight}}px;" bindscrolltolower="loadMore"
+                refresher-enabled="{{true}}"
+                refresher-triggered="{{triggered}}"
+                bindrefresherrefresh="onRefresh"
+                bindrefresherpulling="onPulling"
+                >
+                    <view class="body">
+                        <view class="cuxiao">
+                            <image src="../../assets/image/cxleft.jpg" class="cximg"></image>
+                            <text class="cx">逛促销</text>
+                            <image src="../../assets/image/cxright.jpg" class="cximg"></image>
+                        </view>
+                    </view>
+                    <view class="manjian">满200减10元</view>
+                    <view class="guize">
+                        <view class="content">促销时间：12月31日23：59结束促销</view>
+                        <view class="content">促销规则：以下商品满200元减10元</view>
+                    </view>
+
+                    <!-- 商品 -->
+                    <view class="recommend">
+                        <view wx:for="{{products}}" wx:key="index" class="item" bindtap="goProductDetail" data-id="{{item._id}}">
+                            <view class="imgs">
+                                <image src="{{url}}{{item.goods_cover}}"></image>
+                            </view>
+                            <view class="title">{{item.title}}</view>
+                            <view class="price">
+                                <text class="price1">¥{{item.shop_price}}</text>
+                                <text class="count">销量:{{item.click_count}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <view class='goTop' hidden='{{!floorstatus}}' bindtap="goTop">回到顶部</view>
+            </view>
+        </view>
+    </view>
+</view>

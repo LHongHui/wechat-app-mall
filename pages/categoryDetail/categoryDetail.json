@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "分类商品列表页",
+  "usingComponents": {
+    "nav-bar": "../../components/navbar/navbar"
+  }
+}

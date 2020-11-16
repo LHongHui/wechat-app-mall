@@ -1,0 +1,92 @@
+
+
+.address-list {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding-bottom: 100rpx;
+}
+
+.address-list .a-address {
+  width: 720rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.a-address .left-text {
+  width: 610rpx;
+  box-sizing: border-box;
+}
+
+.a-address .left-text .name-tel {
+  margin-bottom: 20rpx;
+}
+
+.a-address .left-text .address-box {
+  font-size: 24rpx;
+  color: #888;
+  line-height: 36rpx;
+}
+
+.a-address .default{
+  width: 80rpx;
+  font-size: 25rpx;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  border: 4rpx solid red;
+  border-radius: 8rpx;
+  margin-right: 40rpx;
+}
+
+.a-address .right-edit {
+  width: 72rpx;
+}
+.a-address .right-edit image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 5rpx;
+}
+
+.bottom-box {
+  position: fixed;
+  width: 80vw;
+  bottom: 0;
+  font-size: 30rpx;
+  color: #333;
+  border-top: 1rpx solid #eee;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50rpx;
+  background-color: rgb(230, 67, 64);
+}
+.bottom-box .next {
+  margin-right: 32rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.bottom-box .add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-box .add-btn image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.bottom-box .add-btn view {
+  margin-left: 10rpx;
+  color: #fff;
+  font-weight: bold;
+}

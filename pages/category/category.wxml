@@ -1,0 +1,42 @@
+<!--pages/category/category.wxml-->
+<view>
+<view class="jianbian-box"><image src="/assets/navimg/navbg1.png" class="navimg" mode="widthFix"/></view>
+<view class="nav-box"><image src="/assets/navimg/navbg1.png" class="navimg" mode="widthFix"></image>
+<view class="nav-nav">
+  <view class="touxiang"><image src="/assets/navimg/touxiang.jpg"></image></view>
+  <view class="nav-title">
+    <text>佳音乐器</text>
+    <text>2.3万人关注</text>
+  </view>
+</view> 
+	<header fa="{{fa}}" bindtap="goSearch" ></header>
+  
+</view>
+	<view class="content-container">
+		<scroll-view class="category-container" scroll-y="true">
+			<view class="category" wx:for="{{titles}}" wx:key="index" data-id="{{item._id}}" bindtap="categoryDetail">
+				{{item.title}}
+				<image class="tiao" mode='aspectFill' src="/assets/icon/tiao.png" bindtap="categoryDetail" data-id="{{item._id}}"></image>
+				<image class="dayuhao" mode='aspectFill' src="/assets/icon/dayuhao.png" bindtap="categoryDetail" data-id="{{item._id}}"></image>
+			</view>
+			<!-- 推荐商品 -->
+			<view class="recommend">
+				<image class="tiao" mode='aspectFill' src="/assets/icon/tiao.png"></image>
+				<text class="recommend-txt">推荐商品</text>
+				<view class="recommend-info">
+					<view wx:for="{{products}}" wx:key="index" class="item" bindtap="goProductDetail" data-id="{{item._id}}">
+						<view class="imgs">
+							<image src="{{url}}{{item.goods_cover}}"></image>
+						</view>
+						<view class="title">{{item.title}}</view>
+						<view class="price">
+							<text class="price1">￥{{item.shop_price}}</text>
+							<text class="count">销量：{{item.goods_number}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+
+</view>

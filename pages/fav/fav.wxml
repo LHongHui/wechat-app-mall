@@ -1,0 +1,15 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="container">
+<view class="list2-box">
+    <view class="list2" wx:for="{{goods}}" wx:key="index">
+      <navigator url="../productDetail/productDetail?id={{item._id}}"><image class="img" mode="aspectFill" src="{{url}}{{item.goods_cover}}"></image></navigator>
+      <view class="goods-info">
+        <navigator url="../productDetail/productDetail?id={{item._id}}"><view class="title ellipsis">{{item.title}}</view></navigator>
+        <image class="delete-btn" src="/assets/icon/delete.svg" data-id="{{item._id}}" bindtap="removeFav"></image>
+      </view>
+    </view>
+</view>
+<view wx:if="{{!goods || goods.length == 0}}" class="weui-loadmore weui-loadmore_line" style='margin-top:200rpx;'>
+  <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无收藏</view>
+</view>
+</view>

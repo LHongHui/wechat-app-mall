@@ -1,0 +1,73 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="container">
+  <view class="goods-list">
+    <view class="list-title">商品列表</view>
+    <view class="a-goods" wx:for="{{goodsList}}" wx:key="index">
+      <view class="img-box" bindtap="goProductDetail" data-id="{{item.cid}}">
+        <image src="{{url}}{{item.goods_cover}}" class="img" />
+      </view>
+      <view class="text-box">
+        <view class="arow arow01">
+          <view class="goods-name">{{item.title}}</view>
+          <view class="goods-price">¥ {{item.shop_price}}.00</view>
+        </view>
+        <view>x {{item.count}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="peisong-way">
+    <view class="row-box">
+      <view class="row-label">配送方式</view>
+      <radio-group bindchange="radioChange">
+        <label class="radio">
+          <radio value="kd" checked="{{peisongType == 'kd'}}" /> 快递
+        </label>
+        <label class="radio">
+          <radio value="zq" checked="{{peisongType == 'zq'}}" /> 到店自取
+        </label>
+      </radio-group>
+    </view>
+    <view class="address-box" wx:if="{{peisongType == 'kd'}}">
+      <view class="add-address" hidden="{{curAddressData}}" bindtap="addAddress">
+        <image src="/assets/icon/add-addr.png"></image>
+        <view>新增收货地址</view>
+      </view>
+      <view class="show-address" hidden="{{!curAddressData}}" bindtap="selectAddress">
+        <view class="l">
+          <view class="name-tel">{{curAddressData.name}} {{curAddressData.phone}}</view>
+          <view class="addr-text">{{curAddressData.addressInfo}}</view>
+        </view>
+        <view class="r">
+          <image class="next" src="/assets/icon/next.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">备注</view>
+      <view class="right-text">
+        <input bindinput="remarkChange" type="text" class="liuyan" placeholder="如需备注请输入" />
+      </view>
+    </view>
+  </view>
+  <view class="goods-info">
+    <view class="row-box">
+      <view class="row-label">商品金额</view>
+      <view class="right-text">¥ {{allGoodsPrice}}.00</view>
+    </view>
+    <view class="row-box" wx:if="{{peisongType == 'kd'}}">
+      <view class="row-label">运费</view>
+      <view class="right-text">+ ¥ {{yunPrice}}.00</view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">优惠</view>
+      <view class="right-text youhui">满200减10元</view>
+    </view>
+  </view>
+
+  <view class="jiesuan-box">
+    <view class="left-price">
+      <view class="total">合计：¥ {{allGoodsAndYunPrice}}.00</view>
+    </view>
+    <view class="to-pay-btn" bindtap="createOrder">提交订单</view>
+  </view>
+</view>

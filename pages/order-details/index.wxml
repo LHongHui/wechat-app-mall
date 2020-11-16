@@ -1,0 +1,60 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="container">
+  <view class="sec-wrap">
+    <!-- <view class="order-status">
+      <view class="icon-box">
+        <image wx:if="{{orderDetail[0].order_status==-1}}" class="icon" src="/assets/order-details/icon-ddgb.png"></image>
+        <image wx:elif="{{orderDetail[0].order_status==0}}" class="icon" src="/assets/order-details/icon-ddfk.png"></image>
+        <image wx:elif="{{orderDetail[0].order_status==1}}" class="icon" src="/assets/order-details/icon-ddfh.png"></image>
+        <image wx:elif="{{orderDetail[0].order_status==2}}" class="icon" src="/assets/order-details/icon-ddsh.png"></image>
+        <image wx:elif="{{orderDetail[0].order_status==3 || orderDetail.orderInfo.order_status==4}}" class="icon" src="/assets/order-details/icon-jycg.png"></image>
+      </view>
+      <view class="right-text">
+        <view class="des" hidden="true">请于11时59分59秒内付款，超时订单将自动关闭</view>
+      </view>
+    </view> -->
+  </view>
+  
+  <view class="goods-list">
+    <view class="list-title">商品信息</view>
+   
+      <view wx:for="{{orderDetail[0].itemList}}" wx:key="{{index}}">
+        <navigator url="/pages/productDetail/productDetail?id={{item._id}}">
+          <view class="a-goods">
+            <view class="img-box">
+              <image src="{{url}}{{item.product_img}}" class="img" />
+            </view>
+            <view class="text-box">
+              <view class="arow arow01">
+                <view class="goods-name">{{item.product_name}}</view>
+                <view class="goods-price">¥ {{item.product_price*item.product_num}}</view>
+              </view>
+              <view class="arow">
+                <view class="goods-label">{{item.product_price}}</view>
+                <view class="goods-num">x {{item.product_num}}</view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+    </view>
+    <form bindsubmit="confirmBtnTap" report-submit="true">
+      <view class="btn-row" wx:if="{{orderDetail[0].order_status==2}}">
+        <button class="confirm-btn" formType="submit">确认收货</button>
+      </view>
+    </form>
+  </view>  
+  <view class="goods-info">
+    <view class="row-box">
+      <view class="row-label">商品金额</view>
+      <view class="right-text">¥ {{orderDetail[0].all_price}}</view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">运费</view>
+      <view class="right-text">+ ¥ {{orderDetail[0].yunPrice}}</view>
+    </view>
+    <view class="row-box">
+      <view class="row-label">应付总额</view>
+      <view class="right-text">¥ {{orderDetail[0].amountReal}}</view>
+    </view>
+  </view>
+</view>

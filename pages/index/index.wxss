@@ -1,0 +1,470 @@
+/**index.wxss**/
+/* 头部导航条 */
+.cons{
+  padding: 0;
+  margin: 0;
+}
+page{
+  width: 100%;
+  position: relative;
+}
+swiper image{
+  width: 100%;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  border-radius: 50%;
+}
+.jiayin{
+  position: absolute;
+  top: 60rpx;
+  left:130rpx;
+  color:#fff;
+  font-size: 18px;
+}
+.guanzhu{
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top:110rpx;
+  left:130rpx;
+}
+.nav{
+  display: flex;
+  width:60%;
+  position: absolute;
+  top:170rpx;
+  left:-5px;
+  font-size: 14px;
+}
+.nav .title{
+  flex: 1;
+  text-align: center;
+  color: #fff;
+}
+.nav .cur{
+  border-bottom: 2px solid #fff;
+}
+.cons .desc{
+  display: none;
+}
+.cons .cur{
+  display: block;
+}
+.wxParse-img{
+  display: flex;
+}
+/* 横向滑动效果 */
+.bao{
+  text-align: center;
+  color:black;
+}
+.page-section-spacing{
+  white-space: nowrap;
+}
+.scroll-view-item_H {
+  display: inline-block;
+  position: relative;
+
+}
+.scroll-view-item_H image{
+  width: 50px;
+  height: 50px;
+  border:1px solid #ccc;
+  margin: 20px 30px;
+  padding: 5px;
+}
+.scroll-view-item_H  .title{
+  font-size: 12px;
+  position: absolute;
+  top: 80px;
+  left:-2%;
+  margin: 4px 20px;
+  z-index: 1000;
+}
+
+.sign{
+  font-size: 20px;
+  font-weight: 700;
+  color:red;
+  margin-left: 155px;
+}
+.lineheight{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ad{
+  display: inline-block;
+  height: auto;
+}
+.gzbtn{
+  color: #fff;
+  padding: 3px 5px 3px;
+  border:1px solid #ccc;
+  border-radius: 20px;
+  width: 40px;
+  text-align: center;
+  position: absolute;
+  top:50rpx;
+  right: 100px;
+}
+
+
+
+/* 商品页样式 */
+/* pages/huodong/huodong.wxss */
+.navigator{
+  position: relative;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  border-radius: 50%;
+}
+.jiayin{
+  position: absolute;
+  top: 40rpx;
+  left:130rpx;
+  color:#fff;
+  font-size: 18px;
+}
+.guanzhu{
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top:94rpx;
+  left:130rpx;
+}
+#bar{
+  width: 200px;
+}
+#bar .navbar1{
+  width: 200px;
+  color: white;
+  position: absolute;
+  top:160rpx;
+  left:10px;
+}
+#bar .navbar2{
+  width: 200px;
+  color: white;
+  position: absolute;
+  top:160rpx;
+  left:70px;
+}
+#bar .navbar3{
+  width: 200px;
+  color: white;
+  position: absolute;
+  top:160rpx;
+  left:130px;
+}
+.oldBtn{
+  color: #fff;
+  padding: 3px 5px 3px;
+  /* border:1px solid #fff; */
+  border-radius: 20px;
+  width: 40px;
+  text-align: center;
+  position: absolute;
+  top:66rpx;
+  right: 100px;
+  background-color: orangered;
+  font-family: "楷体";
+}
+.newBtn{
+  color: #fff;
+  padding: 3px 5px 3px;
+  border:1px solid #fff;
+  border-radius: 20px;
+  width: 40px;
+  text-align: center;
+  position: absolute;
+  top:50rpx;
+  right: 100px;
+  font-family: "楷体";
+}
+.cuxiao{
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.manjian{
+  color: red;
+  font-size: 16px;
+  margin: 5px 15px ;
+}
+.guize{
+  font-size: 14px;
+  color:orangered;
+  background-color: lightyellow;
+  width:100%;
+}
+.guize .content{
+  margin-left: 10px;
+  padding: 5px;
+  font-weight: 400;
+}
+.recommend{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.item{
+  width: 48%;
+  background: #fff;
+  padding:1%;
+  margin-bottom: 6rpx;
+}
+.imgs {
+  position: relative;
+  padding-top: 100%; /*将图像100%放进父级盒子中*/
+  width: 100%;
+}
+.recommend image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.recommend .title {
+  font-size: 26rpx;
+  line-height: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  display: -webkit-box;
+  text-overflow: -o-ellipsis-lastline;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding:0 16rpx;
+}
+.recommend .price {
+  height: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.recommend .price1 {
+  color: #f00;
+  font: 26rpx JDZhengHT-EN-Regular;
+}
+.recommend .count {
+  font: bold 26rpx arial;
+}
+.filters{
+  margin-left: 5px;
+  display: flex;
+  white-space: nowrap;
+}
+.filters .item{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  margin:5px 15px;
+}
+.sousuo{
+  width: 100px;
+  height: 28px;
+  line-height: 28px;
+  color: #fff;
+  /* border:1px solid dimgray; */
+  border-radius: 20px;
+  position: absolute;
+  right: -15px;
+  top:160rpx;
+  text-align: center;
+  background-color: #555;
+  opacity: 0.9;
+}
+#searchpng{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top:170rpx;
+  left:245px;
+}
+.foot{
+  width: 340px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: center;
+
+}
+
+
+/* 活动页样式 */
+/* pages/huodong/huodong.wxss */
+.navigator{
+  position: relative;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  border-radius: 50%;
+}
+.jiayin{
+  position: absolute;
+  top: 40rpx;
+  left:130rpx;
+  color:#fff;
+  font-size: 18px;
+}
+.guanzhu{
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top:90rpx;
+  left:130rpx;
+}
+.cuxiao{
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+.manjian{
+  color: red;
+  font-size: 16px;
+  margin: 5px 15px ;
+}
+.guize{
+  font-size: 14px;
+  color:orangered;
+  background-color: lightyellow;
+  width:100%;
+}
+.guize .content{
+  margin-left: 10px;
+  padding: 5px;
+  font-weight: 400;
+}
+.fenlei image{
+  margin-top: 50px;
+}
+.item-outter{
+  width: 150px;
+  height: 180px;
+}
+.info{
+  position: relative;
+}
+.info .price{
+  color: #f00;
+  margin-left: 90px;
+  margin-top: 12px;
+}
+.info .count{
+  position: absolute;
+  top: -1px;
+  left: 6px;
+}
+.recommend{
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.item{
+  width: 48%;
+  background: #fff;
+  padding:1%;
+  margin-bottom: 6rpx;
+}
+.imgs {
+  position: relative;
+  padding-top: 100%; /*将图像100%放进父级盒子中*/
+  width: 100%;
+}
+.recommend image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.recommend .title {
+  font-size: 26rpx;
+  line-height: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+  display: -webkit-box;
+  text-overflow: -o-ellipsis-lastline;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding:0 16rpx;
+}
+.recommend .price {
+  height: 30rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.recommend .price1 {
+  color: #f00;
+  font: 26rpx JDZhengHT-EN-Regular;
+}
+.recommend .count {
+  font: bold 26rpx arial;
+}
+.cx{
+  position: absolute;
+  top: 7px;
+  left: 133px;
+}
+.cximg{
+  width: 30px;
+  height: 30px;
+  margin: 10px 40px;
+}
+
+.filters {
+  width: 100vw;
+  height: 88rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.filters .item {
+  line-height: 88rpx;
+}
+.filters .active {
+  color:#fa1e26;
+}
+/* 返回顶部 */
+.goTop{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 50rpx;
+  background: rgba(0,0,0,.3);
+  right: 30rpx;
+  border-radius: 50%;
+}
+.backtop{
+  width: 25px;
+  height: 25px;
+  background-color: #000;
+  border-radius: 50%;
+  opacity: 0.4;
+  position: fixed;
+  bottom: 10px;
+  right:10px;
+}

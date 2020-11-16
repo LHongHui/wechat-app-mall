@@ -1,0 +1,120 @@
+<view wx:if="{{wxloginHidden}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='header'>
+            <image src='/assets/nologin.png'></image>
+        </view>
+
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
+        <button class='bottom'  bindtap="cancelLogin" type="default">暂不登录</button>
+    </view>
+    <view wx:else>请升级微信版本</view>
+</view>
+
+<view wx:else>
+    
+<view class="container">
+	<view wx:if="{{apiUserInfoMap}}" class="userinfo">
+		<image wx:if="{{apiUserInfoMap.avatarUrl}}" class="userinfo-avatar" src="{{ apiUserInfoMap.avatarUrl }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ apiUserInfoMap.nickName }}</text>
+	</view>
+  <view wx:else class="userinfo" style="margin-bottom:50rpx;">
+		<image class="userinfo-avatar" src="/assets/nologin.png" background-size="cover"></image>
+		<button class="weui-btn mini-btn" plain="true" size="mini" bindtap="goLogin">立即登录</button>
+    
+	</view>
+  <view class="space"></view>
+  <navigator url="/pages/order-list/index">
+    <view class="menu-item">
+      <view class="l">我的订单</view>
+      <image class="next" src="/assets/icon/next.png"></image>
+    </view>
+  </navigator>
+  <view class="line"></view>
+  <view class='order-shortcut'>
+    <!-- 订单状态： 0 待付款  1 已付款,待发货  2 待收货  3、待评价  4、交易成功   99、退货     -1 取消      -->
+    <view class='item' bindtap='goOrder' data-type="0">
+      <view wx:if="{{count_id_no_pay !== 0}}" class='dot'>{{count_id_no_pay}}</view>
+      <image class="icon" src="/assets/order/topay.png" background-size="cover"></image>
+      <view class='text'>待付款</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="1">
+      <view wx:if="{{count_id_no_transfer !== 0}}" class='dot'>{{count_id_no_transfer}}</view>
+      <image class="icon" src="/assets/order/fahuo.png" background-size="cover"></image>
+      <view class='text'>待发货</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="2">
+      <view wx:if="{{count_id_no_confirm !== 0}}" class='dot'>{{count_id_no_confirm}}</view>
+      <image class="icon" src="/assets/order/shouhuo.png" background-size="cover"></image>
+      <view class='text'>待收货</view>
+    </view>
+    <view class='item' bindtap='goOrder' data-type="3">
+      <view wx:if="{{count_id_no_reputation !== 0}}" class='dot'>{{count_id_no_reputation}}</view>
+      <image class="icon" src="/assets/order/pj.png" background-size="cover"></image>
+      <view class='text'>待评价</view>
+    </view>
+    <!-- data-type="99" 退货 -->
+    <view class='item' bindtap='goOrder' data-type="99">
+      <image class="icon" src="/assets/order/shouhou.png" background-size="cover"></image>
+      <view class='text'>售后</view>
+    </view>
+  </view>
+  <view class="space"></view>
+  <navigator url="/pages/select-address/index">
+    <view class="menu-item">
+      <view class="l">收货地址</view>
+      <image class="next" src="/assets/icon/next.png"></image>
+    </view>
+  </navigator>
+  <view class="line"></view>
+  <navigator url="/pages/coupons/index">
+    <view class="menu-item">
+      <view class="l">领券中心</view>
+      <image class="next" src="/assets/icon/next.png"></image>
+    </view>
+  </navigator>
+  <view class="line"></view>
+  <navigator url="/pages/fav/fav">
+    <view class="menu-item">
+      <view class="l">我的收藏</view>
+      <image class="next" src="/assets/icon/next.png"></image>
+    </view>
+  </navigator>
+<view class="space"></view>
+  <view class="menu-item" bindtap="aboutUs">
+    <view class="l">关于我们</view>
+    <image class="next" src="/assets/icon/next.png"></image>
+  </view>
+  <view class="line"></view>
+  <view wx:if="{{userMobile}}" class="menu-item">
+    <view class="l">绑定手机</view>
+    <view class="r">{{ userMobile }}</view>
+  </view>
+  <view  wx:else class="menu-item">
+    <view class="l">绑定手机</view>
+    <button type="primary" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">立即绑定</button>
+  </view>
+  <view class="line"></view>
+  <view class="menu-item" bindtap="clearStorage">
+    <view class="l">清除缓存</view>
+    <image class="next" src="/assets/icon/next.png"></image>
+  </view>
+  <view class="line"></view>
+  <view wx:if="{{apiUserInfoMap}}" class="menu-item" bindtap="loginOut">
+    <view class="l">退出登录</view>
+    <image class="next" src="/assets/icon/next.png"></image>
+  </view>
+  <view wx:else class="menu-item" bindtap="goLogin">
+    <view class="l">授权登录</view>
+    <image class="next" src="/assets/icon/next.png"></image>
+  </view>
+  <view class="space"></view>
+</view>
+
+</view>

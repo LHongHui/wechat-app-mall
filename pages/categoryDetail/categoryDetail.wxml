@@ -1,0 +1,74 @@
+<!-- 引入自定义组价。'navbar-data'中navbar是自定义名字，决定了组件中'navbarData'的名字 -->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+
+<view class="container">
+<view class='home-page' style='margin-top: {{height}}px'>
+
+	<view class="filters">
+		<!-- // orderBy: is_new 最新商品,click_count, shop_price   -->
+		<view class="item {{orderBy==0?'active':''}}" data-val="0" bindtap="filter">综合</view>
+		<view class="item {{orderBy==1?'active':''}}" data-val="1" bindtap="paixiaoliang">销量</view>
+		<view class="item {{orderBy==2?'active':''}}" data-val="2" bindtap="paijiage">
+			价格
+		</view>
+		<image class="show-type" src="/assets/icon/list{{listType}}.png" bindtap="changeShowType"></image>
+
+	</view>
+
+
+
+<!-- <view class="liketab"> -->
+	<!-- <view bindtap="getGoodsList">综合</view>
+	<view bindtap="paixiaoliang">销量</view>
+ 	<view bindtap="paijiage" class="jg">
+		  <text class="jg_txt">价格</text>
+			<view class="jg_arrow">
+				<image class="up_arrow" src="/assets/icon/arrow_down.png" />
+				<image class="down_arrow" src="/assets/icon/arrow_up.png"/>
+			</view>
+	</view> -->
+	<!-- <image class="show-type" src="/assets/icon/list{{listType}}.png" bindtap="changeShowType"></image> -->
+<!-- </view> -->
+
+	<block wx:if="{{listType == 1}}">
+		<view class="goodList">
+			<view class="list1" wx:for="{{categoryGoodsList}}" wx:key="id">
+				<view class="a-goods-conts {{item.active? 'active':''}}"  style="{{item.left}}">
+					<navigator url="/pages/productDetail/productDetail?id={{item._id}}">
+						<image class="img" mode="aspectFill" src="{{url}}{{item.goods_cover}}"></image>
+					</navigator>
+					<view class="goods-info">
+						<view class="title ellipsis">
+							<navigator url="/pages/productDetail/productDetail?id={{item._id}}">{{item.title}}</navigator>
+						</view>
+						<view class="price">¥ {{item.shop_price}}</view>
+						<view class="buy-info">
+							<view class="num">已售出{{item.click_count}}件</view>
+							<image class="car" src="/assets/icon/gouwuche.png" data-id="{{item._id}}" bindtap="toDetailsTap"></image>
+						</view>
+					</view>
+
+					<view class="fav-btn"  bindtap="addfav">
+						收藏
+					</view>
+				</view>
+			</view>
+		</view>
+	</block>
+	<view wx:if="{{listType == 2}}" class="goods2-box">
+		<view class="goods2" wx:for="{{categoryGoodsList}}" wx:key="index">
+			<image class="pic" mode="aspectFill" src="{{url}}{{item.goods_cover}}" bindtap="toDetailsTap" data-id="{{item._id}}" />
+			<view class="goods-info">
+				<view class="title">
+					<navigator url="/pages/productDetail/productDetail?id={{item._id}}">{{item.title}}</navigator>
+				</view>
+				<view class="price">¥ {{item.shop_price}}</view>
+				<view class="buy-info">
+					<view class="num">已购{{item.click_count}}件</view>
+					<image class="car" src="/assets/icon/gouwuche.png" data-id="{{item._id}}" bindtap="toDetailsTap"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+</view>

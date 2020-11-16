@@ -1,0 +1,78 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="page">
+  <view class="page__bd">
+    <form bindsubmit="bindSave">
+    <view class="weui-cells weui-cells_after-title">      
+      <view wx:if="{{!id && provinces}}" class="weui-cell weui-cell_select" bindtap="readFromWx">
+        <view class="weui-cell__bd">
+          <view class="weui-select weui-select_in-select-after read-wx">
+            获取微信收货地址
+          </view>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">省份</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="provinceChange" value="{{pIndex}}" range="{{provinces}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{provinces[pIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:if="{{cities}}" class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">城市</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="cityChange" value="{{cIndex}}" range="{{cities}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{cities[cIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:if="{{areas}}" class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">区县</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="areaChange" value="{{aIndex}}" range="{{areas}}" range-key="name">
+            <view class="weui-select weui-select_in-select-after">{{areas[aIndex].name}}</view>
+          </picker>
+        </view>
+      </view>
+      
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="linkMan" class="weui-input" type="text" placeholder="填写收货人" value="{{addressData.name}}" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机号码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="mobile" class="weui-input" type="number" placeholder="填写手机号码" value="{{addressData.phone}}" />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">详细地址</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="address" class="weui-input" type="text" placeholder="街道门牌信息" value="{{addressData.addressInfo}}" />
+        </view>
+      </view>
+      
+
+
+    </view>
+    <view class="weui-btn-area">
+      <button type="primary" class="save-btn" formType="submit" style="width:70vw">保存</button>
+      <button type="danger" class="save-btn" bindtap="deleteAddress" data-id="{{addressData._id}}" wx:if="{{id}}" style="width:70vw">删除该地址</button>
+    </view>
+    </form>
+  </view>
+</view>

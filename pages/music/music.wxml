@@ -1,0 +1,7 @@
+<movable-area>
+	<movable-view direction="all" x="{{x}}" y="{{y}}" inertia="{{true}}" bindchange="changePosition" class="musicWrap">
+		<view>
+			<image class="img" animation="{{animationData}}" bindtap="fun" src="/assets/image/Joy9.jpg"></image>
+		</view>
+	</movable-view>
+</movable-area>

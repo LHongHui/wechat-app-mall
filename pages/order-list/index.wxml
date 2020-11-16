@@ -1,0 +1,42 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="container">
+  <view wx:if='{{!hasRefund}}' class="status-box">
+    <view bindtap="statusTap" class="status-label {{item.status == status ? 'active' : ''}}" wx:for="{{statusType}}" wx:key="index" data-status="{{item.status}}">
+      {{item.label}}
+      <!-- {{badges[index]}}值:count_id_no_pay, count_id_no_confirm-->
+      <view wx:if="{{badges[index]}}" class="weui-badge" style="position: absolute;top: 5rpx;right: 5rpx;">{{badges[index]}}</view>
+    </view>
+  </view>
+  <view class="no-order" hidden="{{orderList ? true : false}}">
+    <image src="/assets/no-order.png" class="no-order-img"></image>
+    <view class="text">暂无订单</view>
+  </view>
+  <view class="order-list" hidden="{{orderList ? false : true}}">
+    <view class="a-order" wx:for="{{orderList}}" wx:for-item="orders" wx:key="index">
+      <navigator url="/pages/order-details/index?id={{orders._id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">订单号：{{orders.order_id}}</view>
+      </navigator>
+      <scroll-view class="goods-img-container" scroll-x="true">
+        <view class="img-box" wx:for="{{orders.itemList}}" wx:key="index">
+          <navigator url="/pages/productDetail/productDetail?id={{item.product_id}}"><image src="{{url}}{{item.product_img}}" class="goods-img"></image></navigator>
+        </view>
+      </scroll-view>
+      <view class="goods-price">
+        共 {{orders.goodsNumber}} 件商品 合计：
+        <text class="p">¥ {{orders.amountReal}}</text>
+      </view>
+      <view class="goods-info">
+        <view class="goods-des">
+          <view class="remark" wx:if="{{orders.remark && order.remark != ''}}">标注:{{orders.remark}}</view>
+        </view>
+      </view>
+      <view class="price-box">
+        <view class="btn" hidden="{{orders.order_status==0? false : true}}" bindtap="cancelOrderTap" data-id="{{orders._id}}">取消订单</view>
+        <view class="btn" hidden="{{orders.order_status==-1? false : true}}">已取消订单</view>
+        <view class="btn active" hidden="{{orders.order_status==0? false : true}}">马上付款</view>
+        <view class="btn active" hidden="{{(orders.order_status==0 || orders.order_status==-1) ? true : false}}">退换货</view>
+      </view>
+    </view>
+  </view>
+  <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
+</view>

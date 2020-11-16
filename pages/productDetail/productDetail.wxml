@@ -1,0 +1,201 @@
+<!--模板 wxml引入下面代码 -->
+<import src="../../wxParse/wxParse.wxml" />
+
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<music page-this="{{that}}"></music>
+<view class="container">
+	<view class='home-page' style='margin-top: {{height1}}px'>
+	<swiper circular="{{circular}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{height}}px;">
+		<!-- block 区块不会解析为任何标记 view解析为div -->
+		<block wx:for="{{swipers}}" wx:key="index">
+			<swiper-item>
+				<!-- 图像组件 image -->
+				<image src="{{url}}{{item}}" bindload="setContainerHeight" mode="widthFix" />
+			</swiper-item>
+		</block>
+	</swiper>
+	<!-- 商品信息 -->
+	<view class="productOne">
+		<view class="info">
+			<text class="priceone">￥{{productOne.shop_price}}</text>
+			<text class="number">库存量：{{productOne.goods_number}}</text>
+		</view>
+		<view class="info-title">
+			<span class="ziying">自营</span>
+			<view class="title">{{productOne.title}}</view>
+		</view>
+		<view class="brand">品牌：{{productOne.goods_keywords}}</view>
+		
+		<view class="cuxiao-box">
+			<view class="cuxiao-title">促销</view>
+			<view class="cuxiao-content">
+				<view class="cuxiao-one-box">
+					<view class="cuxiao-one"><span class="manjian">满减</span></view>
+					<view class="cuxiao-one-info">满减200元减10元</view>
+				</view>
+				<view class="cuxiao-one-box">
+					<view class="cuxiao-one"><span class="manjian2">返券</span></view>
+					<view class="cuxiao-one-info">购高端系列满500返60优惠券</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="yixuan-box" bindtap="addShopCar">
+			<view class="yixuan-text">已选</view>
+			<view class="yiyuan-center">{{productOne.goods_keywords}}</view>
+			<view class="yixuan-right">...</view>
+		</view>
+		</view>
+
+		<view class="songzhi" bindtap="selectaddress_tanceng">
+		送至:请选择地址
+		</view>
+		<view class="fuwu" bindtap="taichufuwu">
+			<view class="fuwu-row1">
+				<span>
+					<image src="/assets/icon/duigou.png" />可配送海外</span>
+				<span>
+					<image src="/assets/icon/duigou.png" />京东发货&售后</span>
+				<span>
+					<image src="/assets/icon/duigou.png" />99元免基础邮费</span>
+			</view>
+			<view class="fuwu-row2">
+				<span>
+					<image src="/assets/icon/duigou.png" />211限时送达</span>
+				<span>
+					<image src="/assets/icon/duigou.png" />京准达</span>
+				<span>
+					<image src="/assets/icon/duigou.png" />7天无理由退货</span>
+			</view>
+		</view>
+
+		<view class="seexiangqing_box">
+			<view class="seexiangqing">上滑查看详情</view>
+			<image class="up_sliding" src="/assets/icon/up_sliding.png"></image>
+		</view>
+
+	<!-- 服务弹层 -->
+	<view class="show-popup" hidden="{{hideFuwuPopup}}">
+		<view class="popup-mask" bindtap="closefuwuTap"></view>
+		<view class="fuwu-contents">
+			<view class="f-top-title">
+				<view class="ffw">服务</view>
+			</view>
+			<view class="f-cont">
+				<view class="fw">
+					<image src="/assets/fuwuicon/diqiu.png" />
+					<view class="f-right">
+						<view class="f-top">可配送海外</view>
+						<view class="f-foot">支持收货地址为海外</view>
+					</view>
+				</view>
+				<view class="fw">
+					<image src="/assets/fuwuicon/anshi.png" />
+					<view class="f-right">
+						<view class="f-top">京东发货&售后</view>
+						<view class="f-foot">由京东发货并提供售后服务</view>
+					</view>
+				</view>
+				<view class="fw">
+					<image src="/assets/fuwuicon/free.png" />
+					<view class="f-right">
+						<view class="f-top">99元免基础运费(20kg内)</view>
+						<view class="f-foot">所选地址自营订单满99元免基础运费(20kg内)，超出重量加收1元/kg续重运费</view>
+					</view>
+				</view>
+				<view class="fw">
+					<image src="/assets/fuwuicon/naozhong.png" />
+					<view class="f-right">
+						<view class="f-top">211限时达</view>
+						<view class="f-foot">上午下单,下午送达</view>
+					</view>
+				</view>
+				<view class="fw">
+					<image src="/assets/fuwuicon/zhunshi.png" />
+					<view class="f-right">
+						<view class="f-top">京准达</view>
+						<view class="f-foot">选择京准达服务，可指定精确时间点收货;若京东责任超时，即时赔付</view>
+					</view>
+				</view>
+				<view class="fw">
+					<image src="/assets/fuwuicon/7.png" />
+					<view class="f-right">
+						<view class="f-top">7天无理由退货</view>
+						<view class="f-foot">支持7天无理由退货</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 返回顶部按钮 -->
+<view><image src='/assets/icon/back_top.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image></view>
+
+	<!-- 产品描述 -->
+	<!-- 小程序不能解析 html 标记，所以 wxParse模块解决 -->
+	<view>
+		<!--这里data中article为bindName -->
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+
+	<!-- 底部导航 -->
+	<view class="footer-box">
+		<view class="contact">
+			<view class="share">
+			<view class="weixin">
+				<button open-type="share">
+					<image src="../../assets/share/share1.png"></image>
+				</button>
+			</view>
+		</view>
+		</view>
+		<view class="shop-cart-btn" bindtap="goShopCar">
+			<view class="shop-num">{{shopNum}}</view>
+			<image src="/assets/icon/cart.png"></image>
+		</view>
+		<view class="collect">
+			<image src="/assets/icon/collect{{faved?'yellow':''}}.png" bindtap="addFav"></image>
+		</view>
+		<view class="join-shop-cart" bindtap="addShopCar">加入购物车</view>
+		<view class="now-buy">立即购买</view>
+	</view>
+	<!-- 弹层 -->
+	<view class="show-popup" hidden="{{hideShopPopup}}">
+		<view class="popup-mask" bindtap="closePopupTap"></view>
+		<view class="popup-contents">
+			<view class="pop-goods-info">
+				<view class="pop-img-box">
+					<image src="{{url}}{{productOne.goods_cover}}" class="goods-thumbnail"></image>
+				</view>
+				<view class="pop-goods-des">
+					<view class="pop-goods-title">{{productOne.title}}</view>
+					<view class="pop-goods-price">
+						￥<text class="t1">{{productOne.shop_price}}</text>
+						<text class="pop-goods-price-original"><text>￥</text>{{productOne.market_price}}</text>
+					</view>
+				</view>
+				<image class="pop-goods-close" src="/assets/icon/cuowu.png" bindtap="closePopupTap"></image>
+			</view>
+
+			<view class="buy-guige-box">已选：{{productOne.goods_keywords}}</view>
+			<!-- <view class="buy-color">颜色：{{productOne.goods_color}}</view> -->
+			<view class="buy-xiangou">限购：{{productOne.goods_number}}件</view>
+			<view class="buy-num-box">
+				<view class="num-label">购买数量</view>
+				<view class="num-box">
+					<view class="num-jian {{buyNumber == buyNumMin ?'hui':''}}" bindtap="numjianTap">-</view>
+					<view class="num-input">
+						<input type="number" value="{{buyNumber}}" disabled />
+					</view>
+					<view class="num-jia {{buyNumber== buyNumMax ?'hui':''}}" bindtap="numjiaTap">+</view>
+				</view>
+			</view>
+
+			<view class="safeAreaOldPaddingBttom safeAreaNewPaddingBttom" bindtap="addShopCarDo">
+				<view class="popup-join-btn" >添加购物车</view>
+			</view>
+		</view>
+	</view>
+
+</view>
